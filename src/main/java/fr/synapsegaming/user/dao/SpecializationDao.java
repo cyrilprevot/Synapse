@@ -23,4 +23,6 @@ public interface SpecializationDao extends Dao<Specialization, Long> {
      */
     public List<Specialization> listSpecsForClass(long idClass);
 
+	public List<Specialization> statsSpecialization();
+
 }

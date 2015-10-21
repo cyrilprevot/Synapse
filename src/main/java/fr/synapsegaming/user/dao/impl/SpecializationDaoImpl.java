@@ -42,4 +42,10 @@ implements SpecializationDao {
             session.close();
         }
     }
+
+	@Override
+	public List<Specialization> statsSpecialization() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

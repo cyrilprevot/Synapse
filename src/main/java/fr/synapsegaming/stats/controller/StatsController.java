@@ -10,6 +10,8 @@ import org.springframework.web.servlet.ModelAndView;
 import fr.synapsegaming.commons.controller.AbstractController;
 import fr.synapsegaming.media.service.ArticleService;
 import fr.synapsegaming.raid.service.ExtensionService;
+import fr.synapsegaming.raid.service.RaidService;
+import fr.synapsegaming.stats.service.StatsService;
 import fr.synapsegaming.ui.service.ResourceService;
 
 
@@ -32,6 +34,8 @@ public class StatsController extends AbstractController{
 	 private static final String PROMS_HTTP_ATTRIBUTE = "proms";
 
 	 private static final String RESOURCES_HTTP_ATTRIBUTE = "resources";
+
+	private static final String STATS_HTTP_ATTRIBUTE = "stats";
 	 
 
 	 @Autowired
@@ -42,6 +46,9 @@ public class StatsController extends AbstractController{
 
 	 @Autowired
 	 ExtensionService extensionService;
+	 
+	 @Autowired
+	 StatsService statsService;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView statistiques(){
@@ -51,6 +58,7 @@ public class StatsController extends AbstractController{
         page.addObject(PROMS_HTTP_ATTRIBUTE, articleService.getFiveLastProms());
         page.addObject(EXTENSION_HTTP_ATTRIBUTE,
                 extensionService.getLastExtension());
+        page.addObject(STATS_HTTP_ATTRIBUTE, statsService.getRaceStats());
     	page.setViewName(STATS_VIEW_NAME);
     	return page;
     

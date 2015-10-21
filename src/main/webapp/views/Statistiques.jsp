@@ -50,6 +50,9 @@
 	<div id="middle-wrapper">
 		<div id="middle-container">
 			<h1>Coucou</h1>
+			<c:forEach items="${stats}" var="stat">
+     			${ stat.id } : ${ stat.nb }
+			</c:forEach>
 		</div>
 	</div>
 	<div id="footer-wrapper">
