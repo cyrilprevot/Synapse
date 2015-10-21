@@ -15,6 +15,8 @@ public interface StatsService {
 	
 	public HashMap<Race,Integer> getRaceStats();
 	
+	public HashMap<Race, Integer> getFiveTopRace();
+	
 	public HashMap<Clazz,Integer> getClazzStats();
 	
 	public HashMap<Specialization, Integer> getSpecializationStats();

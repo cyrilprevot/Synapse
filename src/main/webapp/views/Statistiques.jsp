@@ -51,7 +51,7 @@
 		<div id="middle-container">
 			<h1>Coucou</h1>
 			<c:forEach items="${stats}" var="stat">
-     			${ stat.id } : ${ stat.nb }
+     			${ stat.key.name } : ${ stat.value }
 			</c:forEach>
 		</div>
 	</div>

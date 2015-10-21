@@ -8,16 +8,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.synapsegaming.stats.service.StatsService;
-import fr.synapsegaming.ui.dao.ResourceDao;
-import fr.synapsegaming.user.dao.ClazzDao;
-import fr.synapsegaming.user.dao.RaceDao;
-import fr.synapsegaming.user.dao.SpecializationDao;
-import fr.synapsegaming.user.dao.UserDao;
 import fr.synapsegaming.user.entity.Clazz;
 import fr.synapsegaming.user.entity.Race;
-import fr.synapsegaming.user.entity.Role;
 import fr.synapsegaming.user.entity.Specialization;
 import fr.synapsegaming.user.entity.User;
+import fr.synapsegaming.user.service.UserService;
 
 
 @Service("StatsService")
@@ -30,13 +25,8 @@ public class StatsServiceImpl implements StatsService
     private StatsDao statsDao;
     */
 	@Autowired
-    private RaceDao raceDao;
-	@Autowired
-    private ClazzDao clazzDao;
-	@Autowired
-    private SpecializationDao specializationDao;
-	@Autowired
-    private UserDao userDao;
+	 UserService userService;
+
 	
 	@Override
 	public List<HashMap> getAllStats() {
@@ -46,8 +36,15 @@ public class StatsServiceImpl implements StatsService
 
 	@Override
 	public HashMap<Race,Integer> getRaceStats() {
-		
-		return null;
+		HashMap<Race, Integer> statsRace = new HashMap<Race,Integer>();
+		for(User u : userService.getAllUsers()){
+			if(statsRace.containsKey(u.getRace())){
+				statsRace.put(u.getRace(), statsRace.get(u.getRace())+1);
+			}else{
+				statsRace.put(u.getRace(),1);
+			}
+		}
+		return statsRace;
 	}
 
 	@Override
@@ -62,6 +59,12 @@ public class StatsServiceImpl implements StatsService
 
 	@Override
 	public List<User> getUserStats() {
+		return null;
+	}
+
+	@Override
+	public HashMap<Race, Integer> getFiveTopRace() {
+		HashMap<Race, Integer> statsRace = this.getRaceStats();
 		return null;
 	}
 
