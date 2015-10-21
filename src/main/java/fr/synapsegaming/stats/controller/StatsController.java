@@ -35,7 +35,11 @@ public class StatsController extends AbstractController{
 
 	 private static final String RESOURCES_HTTP_ATTRIBUTE = "resources";
 
-	private static final String STATS_HTTP_ATTRIBUTE = "stats";
+	 private static final String STATSRACE_HTTP_ATTRIBUTE = "statsRace";
+	 
+	 private static final String STATSCLAZZ_HTTP_ATTRIBUTE = "statsClazz";
+	 
+	 private static final String STATSSPEC_HTTP_ATTRIBUTE = "statsSpec";
 	 
 
 	 @Autowired
@@ -56,9 +60,10 @@ public class StatsController extends AbstractController{
     	;
         page.addObject(RESOURCES_HTTP_ATTRIBUTE, resourceService.listMainMenu());
         page.addObject(PROMS_HTTP_ATTRIBUTE, articleService.getFiveLastProms());
-        page.addObject(EXTENSION_HTTP_ATTRIBUTE,
-                extensionService.getLastExtension());
-        page.addObject(STATS_HTTP_ATTRIBUTE, statsService.getRaceStats());
+        page.addObject(EXTENSION_HTTP_ATTRIBUTE, extensionService.getLastExtension());
+        page.addObject(STATSRACE_HTTP_ATTRIBUTE, statsService.getRaceStats());
+        page.addObject(STATSCLAZZ_HTTP_ATTRIBUTE, statsService.getClazzStats());
+        page.addObject(STATSSPEC_HTTP_ATTRIBUTE, statsService.getSpecializationStats());
     	page.setViewName(STATS_VIEW_NAME);
     	return page;
     

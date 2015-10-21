@@ -49,12 +49,28 @@ public class StatsServiceImpl implements StatsService
 
 	@Override
 	public HashMap<Clazz, Integer> getClazzStats() {
-		return null;
+		HashMap<Clazz, Integer> ClazzStats = new HashMap <Clazz, Integer>();
+		for(User u : userService.getAllUsers()){
+			if(ClazzStats.containsKey(u.getClazz())){
+				ClazzStats.put(u.getClazz(), ClazzStats.get(u.getClazz())+1);
+			} else{
+				ClazzStats.put(u.getClazz(), 1);
+			}
+		}
+		return ClazzStats;
 	}
 
 	@Override
 	public HashMap<Specialization, Integer> getSpecializationStats() {
-		return null;
+		HashMap<Specialization, Integer> SpecializationStats = new HashMap <Specialization, Integer>();
+		for(User u : userService.getAllUsers()){
+			if(SpecializationStats.containsKey(u.getSpec())){
+				SpecializationStats.put(u.getSpec(), SpecializationStats.get(u.getSpec())+1);
+			} else{
+				SpecializationStats.put(u.getSpec(), 1);
+			}
+		}
+		return SpecializationStats;
 	}
 
 	@Override
