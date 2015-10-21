@@ -3,7 +3,6 @@ package fr.synapsegaming.stats.service;
 import java.util.HashMap;
 import java.util.List;
 
-import fr.synapsegaming.stats.entity.Stats;
 import fr.synapsegaming.user.entity.Clazz;
 import fr.synapsegaming.user.entity.Race;
 import fr.synapsegaming.user.entity.Role;
@@ -12,13 +11,13 @@ import fr.synapsegaming.user.entity.User;
 
 public interface StatsService {
 
-	public List<List> getAllStats();
+	public List<HashMap> getAllStats();
 	
-	public List<Stats<Race>> getRaceStats();
+	public HashMap<Race,Integer> getRaceStats();
 	
-	public List<Clazz> getClazzStats();
+	public HashMap<Clazz,Integer> getClazzStats();
 	
-	public List<Specialization> getSpecializationStats();
+	public HashMap<Specialization, Integer> getSpecializationStats();
 	
 	//public List<Role> getRoleStats();
 	

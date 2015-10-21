@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import fr.synapsegaming.stats.entity.Stats;
 import fr.synapsegaming.stats.service.StatsService;
 import fr.synapsegaming.ui.dao.ResourceDao;
 import fr.synapsegaming.user.dao.ClazzDao;
@@ -40,29 +39,30 @@ public class StatsServiceImpl implements StatsService
     private UserDao userDao;
 	
 	@Override
-	public List<List> getAllStats() {
+	public List<HashMap> getAllStats() {
 			// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Stats<Race>> getRaceStats() {
-		return raceDao.statsRace();
+	public HashMap<Race,Integer> getRaceStats() {
+		
+		return null;
 	}
 
 	@Override
-	public List<Clazz> getClazzStats() {
-		return clazzDao.statsClazz();
+	public HashMap<Clazz, Integer> getClazzStats() {
+		return null;
 	}
 
 	@Override
-	public List<Specialization> getSpecializationStats() {
-		return specializationDao.statsSpecialization();
+	public HashMap<Specialization, Integer> getSpecializationStats() {
+		return null;
 	}
 
 	@Override
 	public List<User> getUserStats() {
-		return userDao.statsUser();
+		return null;
 	}
 
 }
