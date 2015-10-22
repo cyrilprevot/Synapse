@@ -15,9 +15,9 @@ public interface StatsService {
 
 	public Map getMostPlayedRaces(int nbMostPlayedRaces);
 	
-	public HashMap<Clazz,Integer> getClazzStats();
+	public Map getMostPlayedClazz(int nbMostPlayedClazz);
 	
-	public HashMap<Specialization, Integer> getSpecializationStats();
+	public Map getMostPlayedSpecialization(int nbMostPlayedSpecialization);
 	
 	//public List<Role> getRoleStats();
 	

@@ -49,10 +49,23 @@
 	</div>
 	<div id="middle-wrapper">
 		<div id="middle-container">
-			<h1>Coucou</h1>
-			<c:forEach items="${stats}" var="stat">
+			<p class="TopRace">
+			<c:forEach items="${statsRace}" var="stat">
      			${ stat.key.name } : ${ stat.value }
 			</c:forEach>
+			</p>
+			
+			<p class="TopClazz">
+			<c:forEach items="${statsClazz}" var="stat">
+     			${ stat.key.name } : ${ stat.value }
+			</c:forEach>
+			</p>
+			
+			<p class="TopSpec">
+			<c:forEach items="${statsSpec}" var="stat">
+     			${ stat.key.name } : ${ stat.value }
+			</c:forEach>
+			</p>
 		</div>
 	</div>
 	<div id="footer-wrapper">

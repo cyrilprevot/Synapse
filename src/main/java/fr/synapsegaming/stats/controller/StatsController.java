@@ -27,7 +27,11 @@ import fr.synapsegaming.ui.service.ResourceService;
 public class StatsController extends AbstractController{
 
 	
-	 private static final String STATS_VIEW_NAME = "Statistiques";
+	 private static final int NB_SPECIALIZATION_MOST_PLAYED = 5;
+
+	private static final int NB_CLAZZ_MOST_PLAYED = 5;
+
+	private static final String STATS_VIEW_NAME = "Statistiques";
 	    
 	 private static final String EXTENSION_HTTP_ATTRIBUTE = "extension";
 
@@ -35,7 +39,13 @@ public class StatsController extends AbstractController{
 
 	 private static final String RESOURCES_HTTP_ATTRIBUTE = "resources";
 
-	private static final String STATS_HTTP_ATTRIBUTE = "stats";
+	 private static final String STATSRACE_HTTP_ATTRIBUTE = "statsRace";
+	 
+	 private static final String STATSCLAZZ_HTTP_ATTRIBUTE = "statsClazz";
+	 
+	 private static final String STATSSPEC_HTTP_ATTRIBUTE = "statsSpec";
+	 
+	 private static final int NB_RACES_MOST_PLAYED = 5;
 	 
 
 	 @Autowired
@@ -53,12 +63,13 @@ public class StatsController extends AbstractController{
 	@RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView statistiques(){
     	page = new ModelAndView("Statistiques");
-    	;
         page.addObject(RESOURCES_HTTP_ATTRIBUTE, resourceService.listMainMenu());
         page.addObject(PROMS_HTTP_ATTRIBUTE, articleService.getFiveLastProms());
-        page.addObject(EXTENSION_HTTP_ATTRIBUTE,
-                extensionService.getLastExtension());
-        page.addObject(STATS_HTTP_ATTRIBUTE, statsService.getMostPlayedRaces(5));
+        page.addObject(EXTENSION_HTTP_ATTRIBUTE, extensionService.getLastExtension());
+        page.addObject(STATSRACE_HTTP_ATTRIBUTE, statsService.getMostPlayedRaces(NB_RACES_MOST_PLAYED));
+        page.addObject(EXTENSION_HTTP_ATTRIBUTE, extensionService.getLastExtension());
+        page.addObject(STATSCLAZZ_HTTP_ATTRIBUTE, statsService.getMostPlayedClazz(NB_CLAZZ_MOST_PLAYED));
+        page.addObject(STATSSPEC_HTTP_ATTRIBUTE, statsService.getMostPlayedSpecialization(NB_SPECIALIZATION_MOST_PLAYED));
     	page.setViewName(STATS_VIEW_NAME);
     	return page;
     

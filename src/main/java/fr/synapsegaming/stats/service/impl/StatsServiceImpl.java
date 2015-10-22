@@ -22,7 +22,6 @@ import fr.synapsegaming.utils.Comparateur;
 public class StatsServiceImpl implements StatsService
 {
 
-	private static final int NB_RACES_MOST_PLAYED = 5;
 	/*
 	@Autowired
     private StatsDao statsDao;
@@ -43,17 +42,37 @@ public class StatsServiceImpl implements StatsService
 		}
         Comparateur bvc = new Comparateur(statsRace);
 		
-		return bvc.sortAndResize(NB_RACES_MOST_PLAYED);
+		return bvc.sortAndResize(nbMostPlayedRaces);
 	}
 
 	@Override
-	public HashMap<Clazz, Integer> getClazzStats() {
-		return null;
+	public Map getMostPlayedClazz(int nbMostPlayedClazz) {
+		HashMap<Clazz, Integer> ClazzStats = new HashMap <Clazz, Integer>();
+		for(User u : userService.getAllUsers()){
+			if(ClazzStats.containsKey(u.getClazz())){
+				ClazzStats.put(u.getClazz(), ClazzStats.get(u.getClazz())+1);
+			} else{
+				ClazzStats.put(u.getClazz(), 1);
+			}
+		}
+        Comparateur bvc = new Comparateur(ClazzStats);
+		
+		return bvc.sortAndResize(nbMostPlayedClazz);
 	}
 
 	@Override
-	public HashMap<Specialization, Integer> getSpecializationStats() {
-		return null;
+	public Map getMostPlayedSpecialization(int nbMostPlayedSpecialization) {
+		HashMap<Specialization, Integer> SpecializationStats = new HashMap <Specialization, Integer>();
+		for(User u : userService.getAllUsers()){
+			if(SpecializationStats.containsKey(u.getSpec())){
+				SpecializationStats.put(u.getSpec(), SpecializationStats.get(u.getSpec())+1);
+			} else{
+				SpecializationStats.put(u.getSpec(), 1);
+			}
+		}
+        Comparateur bvc = new Comparateur(SpecializationStats);
+		
+		return bvc.sortAndResize(nbMostPlayedSpecialization);
 	}
 
 	@Override

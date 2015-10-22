@@ -22,17 +22,11 @@ public class Comparateur implements Comparator {
 	
 	public TreeMap sortAndResize(int taille){
 		TreeMap sorted_map = new TreeMap(this);
-		
-		int i=0;
-		for(Object key : this.base.keySet()){
-			sorted_map.put(key, (Integer)this.base.get(key));
-			if(i==(taille-1)){
-				return  sorted_map;
-			}
-			i++;
+		sorted_map.putAll(base);
+		while(sorted_map.size()>taille){
+			sorted_map.pollLastEntry();
 		}
 		
-		//sorted_map.putAll(base);
 		return sorted_map;
 	}
 	 
