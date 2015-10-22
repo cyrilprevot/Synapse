@@ -58,7 +58,7 @@ public class StatsController extends AbstractController{
         page.addObject(PROMS_HTTP_ATTRIBUTE, articleService.getFiveLastProms());
         page.addObject(EXTENSION_HTTP_ATTRIBUTE,
                 extensionService.getLastExtension());
-        page.addObject(STATS_HTTP_ATTRIBUTE, statsService.getRaceStats());
+        page.addObject(STATS_HTTP_ATTRIBUTE, statsService.getMostPlayedRaces(5));
     	page.setViewName(STATS_VIEW_NAME);
     	return page;
     

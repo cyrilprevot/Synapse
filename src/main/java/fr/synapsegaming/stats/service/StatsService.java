@@ -2,6 +2,8 @@ package fr.synapsegaming.stats.service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import fr.synapsegaming.user.entity.Clazz;
 import fr.synapsegaming.user.entity.Race;
@@ -11,11 +13,7 @@ import fr.synapsegaming.user.entity.User;
 
 public interface StatsService {
 
-	public List<HashMap> getAllStats();
-	
-	public HashMap<Race,Integer> getRaceStats();
-	
-	public HashMap<Race, Integer> getFiveTopRace();
+	public Map getMostPlayedRaces(int nbMostPlayedRaces);
 	
 	public HashMap<Clazz,Integer> getClazzStats();
 	

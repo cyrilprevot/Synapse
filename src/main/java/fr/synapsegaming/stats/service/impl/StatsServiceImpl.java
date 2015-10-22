@@ -2,6 +2,7 @@ package fr.synapsegaming.stats.service.impl;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import fr.synapsegaming.user.entity.Race;
 import fr.synapsegaming.user.entity.Specialization;
 import fr.synapsegaming.user.entity.User;
 import fr.synapsegaming.user.service.UserService;
+import fr.synapsegaming.utils.Comparateur;
 
 
 @Service("StatsService")
@@ -20,6 +22,7 @@ import fr.synapsegaming.user.service.UserService;
 public class StatsServiceImpl implements StatsService
 {
 
+	private static final int NB_RACES_MOST_PLAYED = 5;
 	/*
 	@Autowired
     private StatsDao statsDao;
@@ -27,15 +30,9 @@ public class StatsServiceImpl implements StatsService
 	@Autowired
 	 UserService userService;
 
-	
-	@Override
-	public List<HashMap> getAllStats() {
-			// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
-	public HashMap<Race,Integer> getRaceStats() {
+	public Map getMostPlayedRaces(int nbMostPlayedRaces) {
 		HashMap<Race, Integer> statsRace = new HashMap<Race,Integer>();
 		for(User u : userService.getAllUsers()){
 			if(statsRace.containsKey(u.getRace())){
@@ -44,7 +41,9 @@ public class StatsServiceImpl implements StatsService
 				statsRace.put(u.getRace(),1);
 			}
 		}
-		return statsRace;
+        Comparateur bvc = new Comparateur(statsRace);
+		
+		return bvc.sortAndResize(NB_RACES_MOST_PLAYED);
 	}
 
 	@Override
@@ -62,10 +61,6 @@ public class StatsServiceImpl implements StatsService
 		return null;
 	}
 
-	@Override
-	public HashMap<Race, Integer> getFiveTopRace() {
-		HashMap<Race, Integer> statsRace = this.getRaceStats();
-		return null;
-	}
+
 
 }
