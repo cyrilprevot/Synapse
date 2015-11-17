@@ -49,10 +49,4 @@ public class UserDaoImpl extends AbstractDao<User, Long> implements UserDao {
         }
     }
 
-	@Override
-	public List<User> statsUser() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

@@ -66,6 +66,12 @@
      			${ stat.key.name } : ${ stat.value }
 			</c:forEach>
 			</p>
+			
+			<p class="TopUsers">
+			<c:forEach items="${statsUser}" var="stat">
+     			${ stat.key.nickname } : ${ stat.value }
+			</c:forEach>
+			</p>
 		</div>
 	</div>
 	<div id="footer-wrapper">

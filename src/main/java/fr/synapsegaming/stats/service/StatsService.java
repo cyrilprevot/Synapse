@@ -21,7 +21,7 @@ public interface StatsService {
 	
 	//public List<Role> getRoleStats();
 	
-	public List<User> getUserStats();
+	public Map getUserStats(int nbMostActifUser);
 	
 
 }

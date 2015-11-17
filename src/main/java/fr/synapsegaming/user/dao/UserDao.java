@@ -31,6 +31,5 @@ public interface UserDao extends Dao<User, Long> {
      */
     public List<User> listByGroups(List<Integer> groups);
 
-	public List<User> statsUser();
 
 }

@@ -41,10 +41,5 @@ public class ClazzDaoImpl extends AbstractDao<Clazz, Long> implements ClazzDao {
 
     }
 
-	@Override
-	public List<Clazz> statsClazz() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

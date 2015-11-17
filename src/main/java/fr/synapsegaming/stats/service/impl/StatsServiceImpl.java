@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import fr.synapsegaming.social.entity.ForumPost;
+import fr.synapsegaming.social.service.ForumPostService;
+import fr.synapsegaming.social.service.ForumReplyService;
 import fr.synapsegaming.stats.service.StatsService;
 import fr.synapsegaming.user.entity.Clazz;
 import fr.synapsegaming.user.entity.Race;
@@ -28,6 +31,11 @@ public class StatsServiceImpl implements StatsService
     */
 	@Autowired
 	 UserService userService;
+	@Autowired
+	 ForumPostService forumPostService;
+	@Autowired
+	 ForumReplyService forumReplyService;
+	
 
 
 	@Override
@@ -76,10 +84,26 @@ public class StatsServiceImpl implements StatsService
 	}
 
 	@Override
-	public List<User> getUserStats() {
-		return null;
-	}
+	public Map getUserStats(int nbMostActifUser) {
+		
+		
+		HashMap<User, Integer> UserStats = new HashMap <User, Integer>();
+		
+		for(User u : userService.getAllUsers()){ 
+			
+			UserStats.put(u ,  (int)(forumPostService.nbPostByUser(u) + forumReplyService.nbReplyByUser(u)) );
+		
+		}
+		
 
+        Comparateur bvc = new Comparateur(UserStats);
+		
+		return bvc.sortAndResize(nbMostActifUser);		
+		
+	}
+		
+		
+	
 
 
 }
