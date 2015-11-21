@@ -11,4 +11,6 @@ import fr.synapsegaming.social.entity.ForumReply;
  */
 public interface ForumReplyDao extends Dao<ForumReply, Long> {
 
+	
+	public long nbReplyByUser(long idUser);
 }

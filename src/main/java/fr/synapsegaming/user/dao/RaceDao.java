@@ -1,5 +1,8 @@
 package fr.synapsegaming.user.dao;
 
+import java.util.HashMap;
+import java.util.List;
+
 import fr.synapsegaming.commons.dao.Dao;
 import fr.synapsegaming.user.entity.Race;
 
@@ -10,5 +13,7 @@ import fr.synapsegaming.user.entity.Race;
  * 
  */
 public interface RaceDao extends Dao<Race, Long> {
+	
+	Race findById(int id);
 
 }

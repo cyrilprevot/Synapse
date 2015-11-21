@@ -22,4 +22,5 @@ public interface ClazzDao extends Dao<Clazz, Long> {
      */
     public List<Clazz> listClassForRace(long idRace);
 
+
 }

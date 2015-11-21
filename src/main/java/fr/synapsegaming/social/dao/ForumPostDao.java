@@ -11,4 +11,8 @@ import fr.synapsegaming.social.entity.ForumPost;
  */
 public interface ForumPostDao extends Dao<ForumPost, Long> {
 
+	
+	
+	 public long nbPostByUser(long idUser);
+	 
 }
