@@ -53,7 +53,7 @@
 		<div id="middle-container">
 			<div class="Stats">
 			<div class="TopRace">
-			<h3><span>Top Race</span></h3>
+			<h3><span>Top des Races</span></h3>
 			<c:forEach items="${statsRace}" var="stat">
      			<p>${ stat.key.name } : ${ stat.value }</p>
 			</c:forEach>
