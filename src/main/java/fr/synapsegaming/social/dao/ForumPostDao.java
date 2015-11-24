@@ -1,7 +1,6 @@
 package fr.synapsegaming.social.dao;
 
 import fr.synapsegaming.commons.dao.Dao;
-import fr.synapsegaming.social.entity.Forum;
 import fr.synapsegaming.social.entity.ForumPost;
 
 /**
