@@ -23,6 +23,7 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/footer.css" />">
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/JQcalendar.css" />">
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/raid.css" />">
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/statistiques.css" />">
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/jquery.datetimepicker.css" />">
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/jquery.fancybox.css" />">
     <!-- JS -->
@@ -32,6 +33,7 @@
     <script type="text/javascript" src="<c:url value="/resources/js/jquery.fancybox.js" />"></script>
     <script type="text/javascript" src="<c:url value="/resources/js/raid.js" />"></script>
     <script type="text/javascript" src="<c:url value="/resources/js/common.js" />"></script>
+    <script type="text/javascript" src="<c:url value="/resources/js/statistiques.js" />"></script>
 </head>
 <body>
 <div id="page-wrapper">
@@ -49,29 +51,35 @@
 	</div>
 	<div id="middle-wrapper">
 		<div id="middle-container">
-			<p class="TopRace">
+			<div class="Stats">
+			<div class="TopRace">
+			<h3><span>Top Race</span></h3>
 			<c:forEach items="${statsRace}" var="stat">
-     			${ stat.key.name } : ${ stat.value }
+     			<p>${ stat.key.name } : ${ stat.value }</p>
 			</c:forEach>
-			</p>
+			</div>
 			
-			<p class="TopClazz">
+			<div class="TopClazz">
+			<h3><span>Top des Classes</span></h3>
 			<c:forEach items="${statsClazz}" var="stat">
-     			${ stat.key.name } : ${ stat.value }
+     			<p>${ stat.key.name } : ${ stat.value }</p>
 			</c:forEach>
-			</p>
+			</div>
 			
-			<p class="TopSpec">
+			<div class="TopSpec">
+			<h3><span>Top des Spécialisations</span></h3>
 			<c:forEach items="${statsSpec}" var="stat">
-     			${ stat.key.name } : ${ stat.value }
+     			<p>${ stat.key.name } : ${ stat.value }</p>
 			</c:forEach>
-			</p>
+			</div>
 			
-			<p class="TopUsers">
+			<div class="TopUsers">
+			<h3><span>Top des Utilisateurs</span></h3>
 			<c:forEach items="${statsUser}" var="stat">
-     			${ stat.key.nickname } : ${ stat.value }
+     			<p>${ stat.key.nickname } : ${ stat.value }</p>
 			</c:forEach>
-			</p>
+			</div>
+			</div>
 		</div>
 	</div>
 	<div id="footer-wrapper">

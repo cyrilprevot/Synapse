@@ -1,0 +1,48 @@
+.Stats{    margin-left:auto;
+    margin-right:auto;
+    width:80% }
+    
+
+.TopRace h3 span, .TopClazz h3 span
+{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 160px;
+    positions: absolute;
+    background-color: #FFFFFF;
+    display: block;
+    font-family: "Segoe UI", sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #c80000;
+}
+
+.TopSpec h3 span, .TopUsers h3 span
+{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 210px;
+    positions: absolute;
+    background-color: #FFFFFF;
+    display: block;
+    font-family: "Segoe UI", sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #c80000;
+}
+
+.TopRace, .TopClazz, .TopSpec, .TopUsers {
+    width: 350px;
+    display:inline-block;
+    text-align: center;   
+    font-family: 'Segoe UI', sans-serif;
+    margin:50px
+}
+
+.Stats div h3{width: 350px;
+    background-image: url('../img/line.png');
+    text-align: center;
+}}
+	
