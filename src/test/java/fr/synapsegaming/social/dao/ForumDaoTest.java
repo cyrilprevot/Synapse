@@ -13,6 +13,7 @@ public class ForumDaoTest extends AbstractDaoTest {
 	private static final String FIRST_FORUM_NAME_LISTED = "A lire";
 	private static final int NB_FORUMS_FOR_ADMIN = 3;
 	private static final int NB_FORUMS_FOR_GUEST = 1;
+	
 
 	@Autowired
 	ForumDao forumDao;
