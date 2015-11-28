@@ -104,17 +104,32 @@ public class StatsServiceImpl implements StatsService
 
 	@Override
 	public Map getMostPlayedClazzByRace(int nbMostPlayedClazz, long idRace) {
-		HashMap<Clazz, Integer> ClazzStats = new HashMap <Clazz, Integer>();
+		HashMap<Clazz, Integer> clazzStats = new HashMap <Clazz, Integer>();
 		for(User u : userService.getAllUsers()){
-			if(ClazzStats.containsKey(u.getClazz()) && u.getRace().getId()==idRace){
-				ClazzStats.put(u.getClazz(), ClazzStats.get(u.getClazz())+1);
+			if(clazzStats.containsKey(u.getClazz()) && u.getRace().getId()==idRace){
+				clazzStats.put(u.getClazz(), clazzStats.get(u.getClazz())+1);
 			} else if(u.getRace().getId()==idRace){
-				ClazzStats.put(u.getClazz(), 1);
+				clazzStats.put(u.getClazz(), 1);
 			}
 		}
-        Comparateur bvc = new Comparateur(ClazzStats);
+        Comparateur bvc = new Comparateur(clazzStats);
 		
-		return ClazzStats;
+		return clazzStats;
+	}
+	
+	@Override
+	public Map getMostPlayedSpecializationByRace(long idClazz) {
+		HashMap<Specialization, Integer> specStats = new HashMap <Specialization, Integer>();
+		for(User u : userService.getAllUsers()){
+			if(specStats.containsKey(u.getSpec()) && u.getClazz().getId()==idClazz){
+				specStats.put(u.getSpec(), specStats.get(u.getSpec())+1);
+			} else if(u.getClazz().getId()==idClazz){
+				specStats.put(u.getSpec(), 1);
+			}
+		}
+        Comparateur bvc = new Comparateur(specStats);
+		
+		return specStats;
 	}
 		
 		
