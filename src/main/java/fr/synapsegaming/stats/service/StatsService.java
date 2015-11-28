@@ -17,6 +17,8 @@ public interface StatsService {
 	
 	public Map getMostPlayedClazz(int nbMostPlayedClazz);
 	
+	public Map getMostPlayedClazzByRace(int nbMostPlayedClazz, long idRace);
+	
 	public Map getMostPlayedSpecialization(int nbMostPlayedSpecialization);
 	
 	//public List<Role> getRoleStats();

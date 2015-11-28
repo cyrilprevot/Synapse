@@ -101,6 +101,21 @@ public class StatsServiceImpl implements StatsService
 		return bvc.sortAndResize(nbMostActifUser);		
 		
 	}
+
+	@Override
+	public Map getMostPlayedClazzByRace(int nbMostPlayedClazz, long idRace) {
+		HashMap<Clazz, Integer> ClazzStats = new HashMap <Clazz, Integer>();
+		for(User u : userService.getAllUsers()){
+			if(ClazzStats.containsKey(u.getClazz()) && u.getRace().getId()==idRace){
+				ClazzStats.put(u.getClazz(), ClazzStats.get(u.getClazz())+1);
+			} else if(u.getRace().getId()==idRace){
+				ClazzStats.put(u.getClazz(), 1);
+			}
+		}
+        Comparateur bvc = new Comparateur(ClazzStats);
+		
+		return ClazzStats;
+	}
 		
 		
 	

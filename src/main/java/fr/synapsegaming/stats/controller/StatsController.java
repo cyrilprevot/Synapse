@@ -47,6 +47,8 @@ public class StatsController extends AbstractController{
 	 
 	 private static final String STATSUSER_HTTP_ATTRIBUTE = "statsUser";
 	 
+	 private static final String STATSCLAZZBYRACE_HTTP_ATTRIBUTE = "statsClazzByRace";
+	 
 	 private static final int NB_RACES_MOST_PLAYED = 5;
 	 
 	 private static final int NB_USER_MOST_ACTIVE = 5;
@@ -73,6 +75,7 @@ public class StatsController extends AbstractController{
         page.addObject(STATSRACE_HTTP_ATTRIBUTE, statsService.getMostPlayedRaces(NB_RACES_MOST_PLAYED));
         page.addObject(EXTENSION_HTTP_ATTRIBUTE, extensionService.getLastExtension());
         page.addObject(STATSCLAZZ_HTTP_ATTRIBUTE, statsService.getMostPlayedClazz(NB_CLAZZ_MOST_PLAYED));
+        page.addObject(STATSCLAZZBYRACE_HTTP_ATTRIBUTE, statsService.getMostPlayedClazzByRace(NB_CLAZZ_MOST_PLAYED, 1));
         page.addObject(STATSSPEC_HTTP_ATTRIBUTE, statsService.getMostPlayedSpecialization(NB_SPECIALIZATION_MOST_PLAYED));
         page.addObject(STATSUSER_HTTP_ATTRIBUTE, statsService.getUserStats(NB_USER_MOST_ACTIVE));
         

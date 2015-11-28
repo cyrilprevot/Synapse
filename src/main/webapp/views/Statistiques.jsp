@@ -79,6 +79,13 @@
      			<p>${ stat.key.nickname } : ${ stat.value }</p>
 			</c:forEach>
 			</div>
+			
+			<div class="TopClazz">
+			<h3><span>Top des Classes</span></h3>
+			<c:forEach items="${statsClazzByRace}" var="stat">
+     			<p>${ stat.key.name } : ${ stat.value }</p>
+			</c:forEach>
+			</div>
 			</div>
 		</div>
 	</div>
