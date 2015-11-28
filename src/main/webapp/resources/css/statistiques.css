@@ -18,7 +18,7 @@
     color: #c80000;
 }
 
-.TopSpec h3 span, .TopUsers h3 span
+.TopSpec h3 span, .TopUsers h3 span, .UsersWithoutAvatar h3 span
 {
     margin-left: auto;
     margin-right: auto;
@@ -33,7 +33,7 @@
     color: #c80000;
 }
 
-.TopRace, .TopClazz, .TopSpec, .TopUsers {
+.TopRace, .TopClazz, .TopSpec, .TopUsers , .UsersWithoutAvatar {
     width: 350px;
     display:inline-block;
     text-align: center;   

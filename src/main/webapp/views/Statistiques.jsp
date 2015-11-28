@@ -79,6 +79,12 @@
      			<p>${ stat.key.nickname } : ${ stat.value }</p>
 			</c:forEach>
 			</div>
+			<div class="UsersWithoutAvatar">
+			<h3><span>Utilisateurs sans avatar</span></h3>
+			<c:forEach items="${statsUsersWithoutAvatar}" var="stat">
+     			<p>${ stat.nickname }</p>
+			</c:forEach>
+			</div>
 			</div>
 		</div>
 	</div>

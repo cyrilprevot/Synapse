@@ -1,5 +1,6 @@
 package fr.synapsegaming.stats.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,5 +24,6 @@ public interface StatsService {
 	
 	public Map getUserStats(int nbMostActifUser);
 	
+	public ArrayList<User> getUsersWithoutAvatar();
 
 }
