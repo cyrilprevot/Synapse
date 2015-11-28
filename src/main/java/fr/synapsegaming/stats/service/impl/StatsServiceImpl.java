@@ -105,6 +105,7 @@ public class StatsServiceImpl implements StatsService
 		return bvc.sortAndResize(nbMostActifUser);		
 		
 	}
+
 	@Override
 	public ArrayList<User> getUsersWithoutAvatar(){
 		
@@ -126,6 +127,36 @@ public class StatsServiceImpl implements StatsService
 		
 	}
 
+
+	@Override
+	public Map getMostPlayedClazzByRace(int nbMostPlayedClazz, long idRace) {
+		HashMap<Clazz, Integer> clazzStats = new HashMap <Clazz, Integer>();
+		for(User u : userService.getAllUsers()){
+			if(clazzStats.containsKey(u.getClazz()) && u.getRace().getId()==idRace){
+				clazzStats.put(u.getClazz(), clazzStats.get(u.getClazz())+1);
+			} else if(u.getRace().getId()==idRace){
+				clazzStats.put(u.getClazz(), 1);
+			}
+		}
+        Comparateur bvc = new Comparateur(clazzStats);
+		
+		return clazzStats;
+	}
+	
+	@Override
+	public Map getMostPlayedSpecializationByRace(long idClazz) {
+		HashMap<Specialization, Integer> specStats = new HashMap <Specialization, Integer>();
+		for(User u : userService.getAllUsers()){
+			if(specStats.containsKey(u.getSpec()) && u.getClazz().getId()==idClazz){
+				specStats.put(u.getSpec(), specStats.get(u.getSpec())+1);
+			} else if(u.getClazz().getId()==idClazz){
+				specStats.put(u.getSpec(), 1);
+			}
+		}
+        Comparateur bvc = new Comparateur(specStats);
+		
+		return specStats;
+	}
 		
 		
 	

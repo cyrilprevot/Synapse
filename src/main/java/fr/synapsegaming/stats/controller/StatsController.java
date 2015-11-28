@@ -47,8 +47,7 @@ public class StatsController extends AbstractController{
 	 
 	 private static final String STATSUSER_HTTP_ATTRIBUTE = "statsUser";
 	 
-	 private static final String STATUSERSWITHOUTAVATAR_HTTP_ATTRIBUTE = "statsUsersWithoutAvatar";
-
+	 private static final String STATUSERSWITHOUTAVATAR_HTTP_ATTRIBUTE = "statsUsersWithoutAvatar";	 
 	 private static final int NB_RACES_MOST_PLAYED = 5;
 	 
 	 private static final int NB_USER_MOST_ACTIVE = 5;
