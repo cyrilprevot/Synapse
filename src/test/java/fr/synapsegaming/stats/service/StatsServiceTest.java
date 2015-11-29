@@ -36,7 +36,7 @@ public class StatsServiceTest {
 	}
 	@Test
 	public void testMostPlayedSpecializationByRace() {
-		assertTrue(MapUtils.isNotEmpty(statsService.getMostPlayedSpecializationByRace(NUM_CLASS)));
+		assertTrue(MapUtils.isNotEmpty(statsService.getMostPlayedSpecializationByClazz(NUM_CLASS)));
 	}
 	@Test
 	public void testMostPlayedRaces() {
