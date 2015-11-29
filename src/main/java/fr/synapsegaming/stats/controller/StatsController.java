@@ -1,5 +1,9 @@
 package fr.synapsegaming.stats.controller;
 
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,9 +14,11 @@ import org.springframework.web.servlet.ModelAndView;
 import fr.synapsegaming.commons.controller.AbstractController;
 import fr.synapsegaming.media.service.ArticleService;
 import fr.synapsegaming.raid.service.ExtensionService;
-import fr.synapsegaming.raid.service.RaidService;
 import fr.synapsegaming.stats.service.StatsService;
+import fr.synapsegaming.ui.entity.Resource;
 import fr.synapsegaming.ui.service.ResourceService;
+import fr.synapsegaming.user.entity.Group;
+import fr.synapsegaming.user.entity.User;
 
 
 /**
@@ -47,12 +53,13 @@ public class StatsController extends AbstractController{
 	 
 	 private static final String STATSUSER_HTTP_ATTRIBUTE = "statsUser";
 	 
-	 private static final String STATUSERSWITHOUTAVATAR_HTTP_ATTRIBUTE = "statsUsersWithoutAvatar";	 
+	 private static final String STATUSERSWITHOUTAVATAR_HTTP_ATTRIBUTE = "statsUsersWithoutAvatar";	
+	 
 	 private static final int NB_RACES_MOST_PLAYED = 5;
 	 
 	 private static final int NB_USER_MOST_ACTIVE = 5;
 
-
+	 
 	 @Autowired
 	 ArticleService articleService;
 
@@ -66,8 +73,12 @@ public class StatsController extends AbstractController{
 	 StatsService statsService;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView statistiques(){
-    	page = new ModelAndView("Statistiques");
+    public ModelAndView statistiques(HttpServletRequest request){
+    	page = new ModelAndView();
+
+    	
+        page.setViewName(STATS_VIEW_NAME);
+
         page.addObject(RESOURCES_HTTP_ATTRIBUTE, resourceService.listMainMenu());
         page.addObject(PROMS_HTTP_ATTRIBUTE, articleService.getFiveLastProms());
         page.addObject(EXTENSION_HTTP_ATTRIBUTE, extensionService.getLastExtension());
@@ -78,10 +89,9 @@ public class StatsController extends AbstractController{
         page.addObject(STATSUSER_HTTP_ATTRIBUTE, statsService.getUserStats(NB_USER_MOST_ACTIVE));
         page.addObject(STATUSERSWITHOUTAVATAR_HTTP_ATTRIBUTE, statsService.getUsersWithoutAvatar());
 
-        
-    	page.setViewName(STATS_VIEW_NAME);
     	return page;
-    
+    	
+    	    	
     }
 	
 	
