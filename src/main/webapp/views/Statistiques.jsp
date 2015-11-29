@@ -33,7 +33,7 @@
     <script type="text/javascript" src="<c:url value="/resources/js/jquery.fancybox.js" />"></script>
     <script type="text/javascript" src="<c:url value="/resources/js/raid.js" />"></script>
     <script type="text/javascript" src="<c:url value="/resources/js/common.js" />"></script>
-    <script type="text/javascript" src="<c:url value="/resources/js/statistiques.js" />"></script>
+    <script type="text/javascript" src="<c:url value="/resources/js/statistique.js" />"></script>
 </head>
 <body>
 <div id="page-wrapper">
@@ -55,34 +55,41 @@
 			<div class="TopRace">
 			<h3><span>Top des Races</span></h3>
 			<c:forEach items="${statsRace}" var="stat">
-     			<p class="element">${ stat.key.name } : ${ stat.value }</p>
-     			<div class="details">Salut !</div>
+			<p stattype="race" idtype="${stat.key.id }">${ stat.key.name } : ${ stat.value }</p>
 			</c:forEach>
 			</div>
 			
 			<div class="TopClazz">
 			<h3><span>Top des Classes</span></h3>
 			<c:forEach items="${statsClazz}" var="stat">
-     			<p class="element">${ stat.key.name } : ${ stat.value }</p>
-     			<div class="details">Salut !</div>
+     		<p stattype="clazz" idtype="${stat.key.id }">${ stat.key.name } : ${ stat.value }</p>
 			</c:forEach>
 			</div>
 			
 			<div class="TopSpec">
 			<h3><span>Top des Spécialisations</span></h3>
 			<c:forEach items="${statsSpec}" var="stat">
-     			<p class="element">${ stat.key.name } : ${ stat.value }</p>
-     			<div class="details">Salut !</div>
+     			<p>${ stat.key.name } : ${ stat.value }</p>
 			</c:forEach>
 			</div>
-			
+
+		<div class="stats_inf">
 			<div class="TopUsers">
 			<h3><span>Top des Utilisateurs</span></h3>
 			<c:forEach items="${statsUser}" var="stat">
-     			<p class="element">${ stat.key.nickname } : ${ stat.value }</p>
-     			<div class="details">Salut !</div>
+     			<p>${ stat.key.nickname } : ${ stat.value }</p>
 			</c:forEach>
 			</div>
+			
+						
+			<div class="UsersWithoutAvatar">
+			<h3><span>Utilisateurs sans avatar</span></h3>
+			<c:forEach items="${statsUsersWithoutAvatar}" var="stat">
+     			<p>${ stat.nickname }</p>
+			</c:forEach>
+			</div>
+		</div>
+
 			</div>
 		</div>
 	</div>

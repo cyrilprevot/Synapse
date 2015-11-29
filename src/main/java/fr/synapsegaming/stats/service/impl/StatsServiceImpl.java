@@ -1,5 +1,7 @@
 package fr.synapsegaming.stats.service.impl;
 
+import java.io.Console;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,6 +9,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 
 import fr.synapsegaming.social.entity.ForumPost;
 import fr.synapsegaming.social.service.ForumPostService;
@@ -16,6 +19,7 @@ import fr.synapsegaming.user.entity.Clazz;
 import fr.synapsegaming.user.entity.Race;
 import fr.synapsegaming.user.entity.Specialization;
 import fr.synapsegaming.user.entity.User;
+import fr.synapsegaming.user.enums.BlizzardURLEnum;
 import fr.synapsegaming.user.service.UserService;
 import fr.synapsegaming.utils.Comparateur;
 
@@ -100,6 +104,58 @@ public class StatsServiceImpl implements StatsService
 		
 		return bvc.sortAndResize(nbMostActifUser);		
 		
+	}
+
+	@Override
+	public ArrayList<User> getUsersWithoutAvatar(){
+		
+		ArrayList<User> UsersWithoutAvatar = new ArrayList<User>();
+
+		for(User u : userService.getAllUsers()){ 
+
+			if (u.getForumAvatar().equals(BlizzardURLEnum.DEFAULT_USER_URL.getUrl())) {
+				System.out.println("coucou");
+
+				UsersWithoutAvatar.add(u);
+			}
+		}
+		
+
+		
+		return UsersWithoutAvatar;		
+
+		
+	}
+
+
+	@Override
+	public Map getMostPlayedClazzByRace(int nbMostPlayedClazz, long idRace) {
+		HashMap<Clazz, Integer> clazzStats = new HashMap <Clazz, Integer>();
+		for(User u : userService.getAllUsers()){
+			if(clazzStats.containsKey(u.getClazz()) && u.getRace().getId()==idRace){
+				clazzStats.put(u.getClazz(), clazzStats.get(u.getClazz())+1);
+			} else if(u.getRace().getId()==idRace){
+				clazzStats.put(u.getClazz(), 1);
+			}
+		}
+        Comparateur bvc = new Comparateur(clazzStats);
+		
+		return clazzStats;
+	}
+	
+	@Override
+	public Map getMostPlayedSpecializationByClazz(long idClazz) {
+		HashMap<Specialization, Integer> specStats = new HashMap <Specialization, Integer>();
+		for(User u : userService.getAllUsers()){
+			if(specStats.containsKey(u.getSpec()) && u.getClazz().getId()==idClazz){
+				specStats.put(u.getSpec(), specStats.get(u.getSpec())+1);
+			} else if(u.getClazz().getId()==idClazz){
+				specStats.put(u.getSpec(), 1);
+			}
+		}
+        Comparateur bvc = new Comparateur(specStats);
+		
+		return specStats;
 	}
 		
 		

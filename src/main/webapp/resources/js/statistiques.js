@@ -5,6 +5,7 @@ jQuery(document).ready(function()
    jQuery('.TopClazz').hide();
    jQuery('.TopSpec').hide();
    jQuery('.TopUsers').hide();
+   jQuery('.UsersWithoutAvatar').hide();
    jQuery('.details').hide();
    
 	setTimeout(function() { 
@@ -12,6 +13,7 @@ jQuery(document).ready(function()
 		$('.TopClazz').delay(500).fadeIn();
 		$('.TopSpec').delay(1000).fadeIn();
 		$('.TopUsers').delay(1500).fadeIn();
+		$('.UsersWithoutAvatar').delay(2000).fadeIn();
 	}, 500);
 	
 	$('.element').click(function(event)

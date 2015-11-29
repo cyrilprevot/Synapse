@@ -1,5 +1,6 @@
 package fr.synapsegaming.stats.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,11 +18,15 @@ public interface StatsService {
 	
 	public Map getMostPlayedClazz(int nbMostPlayedClazz);
 	
+	public Map getMostPlayedClazzByRace(int nbMostPlayedClazz, long idRace);
+	
 	public Map getMostPlayedSpecialization(int nbMostPlayedSpecialization);
 	
+	public Map getMostPlayedSpecializationByClazz(long idClazz);	
 	//public List<Role> getRoleStats();
 	
 	public Map getUserStats(int nbMostActifUser);
 	
+	public ArrayList<User> getUsersWithoutAvatar();
 
 }

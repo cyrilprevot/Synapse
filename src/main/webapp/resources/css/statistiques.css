@@ -1,6 +1,7 @@
 .Stats{    margin-left:auto;
     margin-right:auto;
-    width:80% }
+    width:95%;
+    position:relative; }
     
 
 .TopRace h3 span, .TopClazz h3 span
@@ -18,7 +19,11 @@
     color: #c80000;
 }
 
-.TopSpec h3 span, .TopUsers h3 span
+.stats_inf{margin:50px;
+		   position:relative;}	
+.stats_inf div {margin:20px;}
+
+.TopSpec h3 span, .TopUsers h3 span, .UsersWithoutAvatar h3 span
 {
     margin-left: auto;
     margin-right: auto;
@@ -33,16 +38,47 @@
     color: #c80000;
 }
 
-.TopRace, .TopClazz, .TopSpec, .TopUsers {
+.TopRace, .TopClazz, .TopSpec, .TopUsers , .UsersWithoutAvatar {
     width: 350px;
     display:inline-block;
     text-align: center;   
     font-family: 'Segoe UI', sans-serif;
-    margin:50px
+    position:relative;
 }
 
 .Stats div h3{width: 350px;
     background-image: url('../img/line.png');
     text-align: center;
-}}
+}
+
+.TopRace{position:absolute;
+		top:10px;
+		left:10px;}	
+		
+.TopClazz{position:absolute;
+		top:10px;
+		left:365px;}
+
+.TopSpec{position:absolute;
+		top:10px;
+		right:10px;}
+
+.TopUsers{position:absolute;
+		  top:350px;
+		  left:100px;}	
+		  
+.UsersWithoutAvatar{position:absolute;
+		  top:350px;
+		  right:100px;}	
+
+.TopDetails{
+		 color:#000;
+		 font-size:12px;
+		 font-style:italic;}
+
+.TopDetails{
+	display: none;
+}
+
+}
 	

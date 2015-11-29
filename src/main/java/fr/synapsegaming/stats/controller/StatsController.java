@@ -1,18 +1,27 @@
 package fr.synapsegaming.stats.controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import fr.synapsegaming.commons.controller.AbstractController;
 import fr.synapsegaming.media.service.ArticleService;
+import fr.synapsegaming.raid.entity.Event;
 import fr.synapsegaming.raid.service.ExtensionService;
 import fr.synapsegaming.raid.service.RaidService;
 import fr.synapsegaming.stats.service.StatsService;
 import fr.synapsegaming.ui.service.ResourceService;
+import fr.synapsegaming.user.entity.Clazz;
+import fr.synapsegaming.user.entity.Specialization;
 
 
 /**
@@ -47,6 +56,7 @@ public class StatsController extends AbstractController{
 	 
 	 private static final String STATSUSER_HTTP_ATTRIBUTE = "statsUser";
 	 
+	 private static final String STATUSERSWITHOUTAVATAR_HTTP_ATTRIBUTE = "statsUsersWithoutAvatar";	 
 	 private static final int NB_RACES_MOST_PLAYED = 5;
 	 
 	 private static final int NB_USER_MOST_ACTIVE = 5;
@@ -75,12 +85,39 @@ public class StatsController extends AbstractController{
         page.addObject(STATSCLAZZ_HTTP_ATTRIBUTE, statsService.getMostPlayedClazz(NB_CLAZZ_MOST_PLAYED));
         page.addObject(STATSSPEC_HTTP_ATTRIBUTE, statsService.getMostPlayedSpecialization(NB_SPECIALIZATION_MOST_PLAYED));
         page.addObject(STATSUSER_HTTP_ATTRIBUTE, statsService.getUserStats(NB_USER_MOST_ACTIVE));
+        page.addObject(STATUSERSWITHOUTAVATAR_HTTP_ATTRIBUTE, statsService.getUsersWithoutAvatar());
+
         
     	page.setViewName(STATS_VIEW_NAME);
     	return page;
     
     }
 	
-	
+	@RequestMapping(value = "/json/{stattype}/{idtype}", method = RequestMethod.GET)
+    @ResponseBody
+    public String getSubTopJSON(@PathVariable String stattype, @PathVariable int idtype) {
+        
+        String json = "[";
+        if(stattype.equals("race")){
+        	Map<Clazz, Integer> topClazz = statsService.getMostPlayedClazzByRace(5, idtype);
+        	for(Map.Entry<Clazz, Integer> entry : topClazz.entrySet()){
+        		json = json + "{\"id\":\"" + entry.getKey().getId() + "\"," 
+        				+ "\"name\":\"" + entry.getKey().getName() + "\"," 
+        				+ "\"nb\":\"" + entry.getValue() 
+        				+ "\"},";
+        	}
+        }else if(stattype.equals("clazz")){
+        	Map<Specialization, Integer> topSpec = statsService.getMostPlayedSpecializationByClazz(idtype);
+        	for(Map.Entry<Specialization, Integer> entry : topSpec.entrySet()){
+        		json = json + "{\"id\":\"" + entry.getKey().getId() + "\"," 
+        				+ "\"name\":\"" + entry.getKey().getName() + "\"," 
+        				+ "\"nb\":\"" + entry.getValue() 
+        				+ "\"},";
+        	}
+        }
+    	json = json.substring(0, json.length() - 1);
+        json = json + "]";
+        return json;
+    }
 	
 }
