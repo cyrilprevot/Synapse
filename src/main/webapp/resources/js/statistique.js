@@ -18,7 +18,7 @@ $(document).ready(function(){
 					addElem(elem, data);
 				}
 				$(this).find("div").slideToggle(500);
-				$(this).siblings("div").next().slideUp();
+				$(this).siblings(this).find("div").slideUp();
 			}
 		});
 
