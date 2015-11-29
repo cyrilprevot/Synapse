@@ -5,10 +5,19 @@ jQuery(document).ready(function()
    jQuery('.TopClazz').hide();
    jQuery('.TopSpec').hide();
    jQuery('.TopUsers').hide();
+   jQuery('.details').hide();
    
-   jQuery('.TopRace').toggle("slow");
-   jQuery('.TopClazz').toggle("slow");
-   jQuery('.TopSpec').toggle("slow");
-   jQuery('.TopUsers').toggle("slow");
+	setTimeout(function() { 
+		$('.TopRace').fadeIn(); 
+		$('.TopClazz').delay(500).fadeIn();
+		$('.TopSpec').delay(1000).fadeIn();
+		$('.TopUsers').delay(1500).fadeIn();
+	}, 500);
+	
+	$('.element').click(function(event)
+			{
+				$(this).next().slideDown();
+				$(this).siblings('.element').next().slideUp();
+			});
    
 });
