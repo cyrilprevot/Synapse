@@ -55,28 +55,32 @@
 			<div class="TopRace">
 			<h3><span>Top des Races</span></h3>
 			<c:forEach items="${statsRace}" var="stat">
-     			<p>${ stat.key.name } : ${ stat.value }</p>
+     			<p class="element">${ stat.key.name } : ${ stat.value }</p>
+     			<div class="details">Salut !</div>
 			</c:forEach>
 			</div>
 			
 			<div class="TopClazz">
 			<h3><span>Top des Classes</span></h3>
 			<c:forEach items="${statsClazz}" var="stat">
-     			<p>${ stat.key.name } : ${ stat.value }</p>
+     			<p class="element">${ stat.key.name } : ${ stat.value }</p>
+     			<div class="details">Salut !</div>
 			</c:forEach>
 			</div>
 			
 			<div class="TopSpec">
 			<h3><span>Top des Spécialisations</span></h3>
 			<c:forEach items="${statsSpec}" var="stat">
-     			<p>${ stat.key.name } : ${ stat.value }</p>
+     			<p class="element">${ stat.key.name } : ${ stat.value }</p>
+     			<div class="details">Salut !</div>
 			</c:forEach>
 			</div>
 			
 			<div class="TopUsers">
 			<h3><span>Top des Utilisateurs</span></h3>
 			<c:forEach items="${statsUser}" var="stat">
-     			<p>${ stat.key.nickname } : ${ stat.value }</p>
+     			<p class="element">${ stat.key.nickname } : ${ stat.value }</p>
+     			<div class="details">Salut !</div>
 			</c:forEach>
 			</div>
 			</div>
