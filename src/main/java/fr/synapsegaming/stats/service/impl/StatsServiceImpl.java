@@ -114,7 +114,6 @@ public class StatsServiceImpl implements StatsService
 		for(User u : userService.getAllUsers()){ 
 
 			if (u.getForumAvatar().equals(BlizzardURLEnum.DEFAULT_USER_URL.getUrl())) {
-				System.out.println("coucou");
 
 				UsersWithoutAvatar.add(u);
 			}
