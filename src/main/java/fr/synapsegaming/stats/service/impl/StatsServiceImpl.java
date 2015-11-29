@@ -143,7 +143,7 @@ public class StatsServiceImpl implements StatsService
 	}
 	
 	@Override
-	public Map getMostPlayedSpecializationByRace(long idClazz) {
+	public Map getMostPlayedSpecializationByClazz(long idClazz) {
 		HashMap<Specialization, Integer> specStats = new HashMap <Specialization, Integer>();
 		for(User u : userService.getAllUsers()){
 			if(specStats.containsKey(u.getSpec()) && u.getClazz().getId()==idClazz){

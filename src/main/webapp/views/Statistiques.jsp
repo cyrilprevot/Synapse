@@ -33,7 +33,7 @@
     <script type="text/javascript" src="<c:url value="/resources/js/jquery.fancybox.js" />"></script>
     <script type="text/javascript" src="<c:url value="/resources/js/raid.js" />"></script>
     <script type="text/javascript" src="<c:url value="/resources/js/common.js" />"></script>
-    <script type="text/javascript" src="<c:url value="/resources/js/statistiques.js" />"></script>
+    <script type="text/javascript" src="<c:url value="/resources/js/statistique.js" />"></script>
 </head>
 <body>
 <div id="page-wrapper">
@@ -55,14 +55,14 @@
 			<div class="TopRace">
 			<h3><span>Top Race</span></h3>
 			<c:forEach items="${statsRace}" var="stat">
-     			<p>${ stat.key.name } : ${ stat.value }</p>
+     			<p stattype="race" idtype="${stat.key.id }">${ stat.key.name } : ${ stat.value }</p>
 			</c:forEach>
 			</div>
 			
 			<div class="TopClazz">
 			<h3><span>Top des Classes</span></h3>
 			<c:forEach items="${statsClazz}" var="stat">
-     			<p>${ stat.key.name } : ${ stat.value }</p>
+     			<p stattype="clazz" idtype="${stat.key.id }">${ stat.key.name } : ${ stat.value }</p>
 			</c:forEach>
 			</div>
 			

@@ -22,7 +22,7 @@ public interface StatsService {
 	
 	public Map getMostPlayedSpecialization(int nbMostPlayedSpecialization);
 	
-	public Map getMostPlayedSpecializationByRace(long idClazz);	
+	public Map getMostPlayedSpecializationByClazz(long idClazz);	
 	//public List<Role> getRoleStats();
 	
 	public Map getUserStats(int nbMostActifUser);

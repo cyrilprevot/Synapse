@@ -1,13 +1,15 @@
 package fr.synapsegaming.stats.controller;
 
-import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -15,10 +17,9 @@ import fr.synapsegaming.commons.controller.AbstractController;
 import fr.synapsegaming.media.service.ArticleService;
 import fr.synapsegaming.raid.service.ExtensionService;
 import fr.synapsegaming.stats.service.StatsService;
-import fr.synapsegaming.ui.entity.Resource;
 import fr.synapsegaming.ui.service.ResourceService;
-import fr.synapsegaming.user.entity.Group;
-import fr.synapsegaming.user.entity.User;
+import fr.synapsegaming.user.entity.Clazz;
+import fr.synapsegaming.user.entity.Specialization;
 
 
 /**
@@ -94,6 +95,31 @@ public class StatsController extends AbstractController{
     	    	
     }
 	
-	
+	@RequestMapping(value = "/json/{stattype}/{idtype}", method = RequestMethod.GET)
+    @ResponseBody
+    public String getSubTopJSON(@PathVariable String stattype, @PathVariable int idtype) {
+        
+        String json = "[";
+        if(stattype.equals("race")){
+        	Map<Clazz, Integer> topClazz = statsService.getMostPlayedClazzByRace(5, idtype);
+        	for(Map.Entry<Clazz, Integer> entry : topClazz.entrySet()){
+        		json = json + "{\"id\":\"" + entry.getKey().getId() + "\"," 
+        				+ "\"name\":\"" + entry.getKey().getName() + "\"," 
+        				+ "\"nb\":\"" + entry.getValue() 
+        				+ "\"},";
+        	}
+        }else if(stattype.equals("clazz")){
+        	Map<Specialization, Integer> topSpec = statsService.getMostPlayedSpecializationByClazz(idtype);
+        	for(Map.Entry<Specialization, Integer> entry : topSpec.entrySet()){
+        		json = json + "{\"id\":\"" + entry.getKey().getId() + "\"," 
+        				+ "\"name\":\"" + entry.getKey().getName() + "\"," 
+        				+ "\"nb\":\"" + entry.getValue() 
+        				+ "\"},";
+        	}
+        }
+    	json = json.substring(0, json.length() - 1);
+        json = json + "]";
+        return json;
+    }
 	
 }

@@ -44,5 +44,11 @@
 .Stats div h3{width: 350px;
     background-image: url('../img/line.png');
     text-align: center;
-}}
+}
+
+.TopDetails{
+	display: none;
+}
+
+}
 	
