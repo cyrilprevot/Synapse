@@ -25,10 +25,8 @@ public class ForumReplyDaoImpl extends AbstractDao<ForumReply, Long> implements
     		   
                .createQuery("select count(*) from ForumReply f where author.id = :idUser");
        	query.setParameter("idUser", idUser);
-       	
        return (long)query.uniqueResult();
    } catch (Exception e) {
-	   System.out.println("coucou " + e);
        //LOGGER.warn(e);
        LOGGER.warn("Il n'y a pas d'utilisateur enregistré");
        return 50;
